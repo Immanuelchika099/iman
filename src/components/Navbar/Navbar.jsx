@@ -1,5 +1,5 @@
 import{useLayoutEffect,useRef,useState}from"react";import gsap from"gsap";import"./Navbar.css";
-const links=[["01","WORK","work"],["02","ABOUT","about"],["03","SERVICES","services"],["04","CONTACT","contact"]];
+const links=[["01","WORK","work"],["02","ABOUT","about"],["03","SERVICES","services"],["04","CONTACT","contact"],["05","RESUME","resume"]];
 function Navbar(){
   const nav=useRef(null),menuPanel=useRef(null),menuItems=useRef([]),menuMeta=useRef(null),[open,setOpen]=useState(false);
   useLayoutEffect(()=>{
@@ -52,15 +52,19 @@ function Navbar(){
       .to(menuPanel.current,{clipPath:"circle(0% at calc(100% - 4rem) 3.4rem)",duration:.65,ease:"power4.inOut"},"-=.12");
     return()=>tl.kill()
   },[open]);
-  function goTo(id){setOpen(false);if(id==="about"){window.history.pushState({}, "", "/about");window.scrollTo(0,0);window.dispatchEvent(new PopStateEvent("popstate"));return}requestAnimationFrame(()=>{const target=document.getElementById(id);if(!target)return;const top=target.getBoundingClientRect().top+window.scrollY;window.scrollTo({top,behavior:"smooth"})})}
+  function goTo(id){
+    setOpen(false);
+    if(id==="resume"){window.open("/resume.pdf","_blank","noopener,noreferrer");return}
+    if(id==="about"){window.history.pushState({}, "", "/about");window.scrollTo(0,0);window.dispatchEvent(new PopStateEvent("popstate"));return}
+    requestAnimationFrame(()=>{const target=document.getElementById(id);if(!target)return;const top=target.getBoundingClientRect().top+window.scrollY;window.scrollTo({top,behavior:"smooth"})})
+  }
   return <><header ref={nav} className={open?"navbar is-open":"navbar"}>
     <div className="navbar__pill">
       <button className="navbar__brand" onClick={()=>{setOpen(false);window.history.pushState({}, "", "/");window.dispatchEvent(new PopStateEvent("popstate"));window.scrollTo({top:0,left:0,behavior:"smooth"})}}>IMAN</button>
-      <nav className="navbar__links">{links.map(([num,label,id])=><button key={id} onClick={()=>goTo(id)}>{label}</button>)}</nav>
+      <nav className="navbar__links">{links.map(([num,label,id])=><button key={id} onClick={()=>goTo(id)}>{label}{id==="resume"?" ↗":""}</button>)}</nav>
       <div className="navbar__availability"><i/> AVAILABLE FOR SELECT PROJECTS</div>
       <button className="navbar__menu" onClick={()=>setOpen(v=>!v)} aria-label={open?"Close menu":"Open menu"} aria-expanded={open}><span/><span/></button>
     </div>
-
   </header>
   <div ref={menuPanel} className="navbar__menu-panel" aria-hidden={!open}>
     <div className="navbar__menu-content">
