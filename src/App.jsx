@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { initSmoothScroll } from "./lib/smoothScroll";
 import Preloader from "./components/Preloader/Preloader";
 import Navbar from "./components/Navbar/Navbar";
-import CinematicHUD from "./components/CinematicHUD/CinematicHUD";
-import CinematicAtmosphere from "./components/CinematicAtmosphere/CinematicAtmosphere";
 import Hero from "./components/Hero/Hero";
 import Marquee from "./components/Marquee/Marquee";
 import Intersection from "./components/Intersection/Intersection";
@@ -75,8 +73,7 @@ function App() {
   return (
     <div className="site-shell">
       {loading && <Preloader onComplete={() => setLoading(false)} />}
-      <CinematicHUD />
-      <CinematicAtmosphere />
+      <Navbar />
       <main>
         <Hero />
         <Marquee />
