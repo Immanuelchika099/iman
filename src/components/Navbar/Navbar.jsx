@@ -61,7 +61,7 @@ function Navbar(){
   return <><header ref={nav} className={open?"navbar is-open":"navbar"}>
     <div className="navbar__pill">
       <button className="navbar__brand" onClick={()=>{setOpen(false);window.history.pushState({}, "", "/");window.dispatchEvent(new PopStateEvent("popstate"));window.scrollTo({top:0,left:0,behavior:"smooth"})}}>IMAN</button>
-      <nav className="navbar__links">{links.map(([num,label,id])=><button key={id} onClick={()=>goTo(id)}>{label}{id==="resume"?" ↗":""}</button>)}</nav>
+      <nav className="navbar__links">{links.map(([num,label,id])=><button key={id} onClick={()=>goTo(id)}>{label}{id==="resume"?<svg className="navbar__resume-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>:null}</button>)}</nav>
       <div className="navbar__availability"><i/> AVAILABLE FOR SELECT PROJECTS</div>
       <button className="navbar__menu" onClick={()=>setOpen(v=>!v)} aria-label={open?"Close menu":"Open menu"} aria-expanded={open}><span/><span/></button>
     </div>
@@ -69,7 +69,7 @@ function Navbar(){
   <div ref={menuPanel} className="navbar__menu-panel" aria-hidden={!open}>
     <div className="navbar__menu-content">
       <nav className="navbar__menu-links">
-        {links.map(([num,label,id],i)=><button key={id} ref={el=>menuItems.current[i]=el} onClick={()=>goTo(id)}><span>{num}</span><strong>{label}</strong><em>↗</em></button>)}
+        {links.map(([num,label,id],i)=><button key={id} ref={el=>menuItems.current[i]=el} onClick={()=>goTo(id)}><span>{num}</span><strong>{label}</strong><em aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></em></button>)}
       </nav>
     </div>
   </div>
