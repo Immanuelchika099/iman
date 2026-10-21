@@ -111,11 +111,20 @@ function SelectedWork() {
           invalidateOnRefresh: true
         }
       });
-      timeline
-        .to(cards.slice(1), { opacity: 1, y: 0, clipPath: "inset(0% 0 0% 0)", duration: 0.22, stagger: 0.06, ease: "power3.out" }, 0.12)
-        .to(cards.slice(1).map((card) => card.querySelector("img")), { scale: 1, duration: 0.28, stagger: 0.06, ease: "power2.out" }, 0.12)
-        .to(cards.slice(1).map((card) => card.querySelector(".work-card__info")), { y: 0, opacity: 1, duration: 0.2, stagger: 0.06, ease: "power2.out" }, 0.2)
-        .to(track.current, { x: () => -getDistance(), duration: 1, ease: "none" }, 0.55);
+      const sceneDuration = Math.max(1, cards.length - 1);
+      const workScroll = viewport.querySelector(".work-scroll");
+      cards.slice(1).forEach((card) => {
+        const revealAt = gsap.utils.clamp(
+          0.08,
+          sceneDuration - 0.42,
+          ((card.offsetLeft - workScroll.clientWidth * 0.55) / Math.max(1, getDistance())) * sceneDuration
+        );
+        timeline
+          .to(card, { opacity: 1, y: 0, clipPath: "inset(0% 0 0% 0)", duration: 0.5, ease: "power3.out" }, revealAt)
+          .to(card.querySelector("img"), { scale: 1, duration: 0.75, ease: "power2.out" }, revealAt)
+          .to(card.querySelector(".work-card__info"), { y: 0, opacity: 1, duration: 0.45, ease: "power2.out" }, revealAt + 0.08);
+      });
+      timeline.to(track.current, { x: () => -getDistance(), duration: sceneDuration, ease: "none" }, 0);
       ScrollTrigger.refresh();
       return () => timeline.scrollTrigger?.kill();
     }, section);
