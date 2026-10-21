@@ -4,17 +4,20 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "lenis/dist/lenis.css";
 
 gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.config({ ignoreMobileResize: true });
 
 let lenisInstance = null;
 
 export function initSmoothScroll() {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return () => {};
+  // Keep touch scrolling native; Lenis is reserved for fine-pointer devices.
+  if (window.matchMedia("(pointer: coarse)").matches) return () => {};
   if (lenisInstance) return () => {};
 
   const lenis = new Lenis({
     duration: 1.15,
     smoothWheel: true,
-    syncTouch: true,
+    syncTouch: false,
     wheelMultiplier: 0.9,
     touchMultiplier: 1,
     anchors: true,
@@ -36,9 +39,9 @@ export function initSmoothScroll() {
         },
       })
     );
-    update();
   };
 
+  lenis.on("scroll", ScrollTrigger.update);
   lenis.on("scroll", onScroll);
   gsap.ticker.add(raf);
   gsap.ticker.lagSmoothing(0);
@@ -47,6 +50,7 @@ export function initSmoothScroll() {
   window.__imanLenis = lenis;
 
   return () => {
+    lenis.off("scroll", ScrollTrigger.update);
     lenis.off("scroll", onScroll);
     gsap.ticker.remove(raf);
     lenis.destroy();
