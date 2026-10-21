@@ -59,6 +59,11 @@ function ProjectCard({ project, index }) {
       </a>
       <div ref={info} className="work-card__info">
         <p>{project.description}</p>
+        <div className="work-card__slate" aria-label="Project credits">
+          <span><small>ROLE</small>{project.role || "Design & Development"}</span>
+          <span><small>STACK</small>{project.stack || project.type}</span>
+          <span><small>YEAR</small>{project.year || "2026"}</span>
+        </div>
         <div className="work-card__links">
           {project.repoUrl && <a className="work-card__icon" href={project.repoUrl} target="_blank" rel="noreferrer" aria-label={project.name + " GitHub repository"}><GitHubIcon /></a>}
           <a className="work-card__view" href={project.liveUrl} target="_blank" rel="noreferrer">VIEW LIVE SITE <span>↗</span></a>
@@ -73,8 +78,17 @@ function SelectedWork() {
   const track = useRef(null);
 
   useLayoutEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return undefined;
+    const isMobile = window.matchMedia("(max-width: 70rem)").matches;
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray("[data-work-card]");
+      if (isMobile) {
+        gsap.fromTo(cards, { opacity: 0, y: 28 }, {
+          opacity: 1, y: 0, duration: 0.75, stagger: 0.12, ease: "power3.out",
+          scrollTrigger: { trigger: section.current, start: "top 78%", once: true }
+        });
+        return;
+      }
       const viewport = section.current.querySelector(".selected-work__viewport");
       gsap.set(cards, { opacity: 0, y: 70, clipPath: "inset(8% 0 4% 0)" });
       cards.forEach((card) => {
