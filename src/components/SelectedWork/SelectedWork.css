@@ -7,16 +7,16 @@
 .work-heading__line-inner{display:block}
 .github-link{display:grid;place-items:center;width:4.8rem;height:4.8rem;flex:0 0 auto;margin-bottom:.5rem;border:1px solid var(--line);border-radius:50%;color:var(--text);transition:color .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease)}
 .github-link svg,.work-card__github svg{width:2rem;height:2rem;fill:currentColor}
-.github-link:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-.2rem)}
+.github-link:hover{color:var(--text);border-color:rgba(255,255,255,.35);transform:scale(1.04)}
 .work-stack{position:relative;display:block;padding:0;isolation:isolate}
 .work-card-slot{position:sticky;top:calc(env(safe-area-inset-top, 0px) + 8.4rem + var(--stack-offset, 0px));padding-bottom:1.2rem;z-index:calc(10 + var(--card-index))}
 .work-card-slot:last-child{padding-bottom:0}
 .work-card{position:relative;width:100%;padding:1.2rem;border:1px solid rgba(255,255,255,.1);border-radius:2.8rem;background:#080808;box-shadow:0 2rem 6rem rgba(0,0,0,.28);overflow:hidden;isolation:isolate;transform-origin:center top}
 .work-card::before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(ellipse at 50% 30%,rgba(21,94,239,.1),transparent 60%);opacity:0;pointer-events:none;z-index:0;transition:opacity .35s ease}
 .work-card::after{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:conic-gradient(from 0deg,transparent 0deg,transparent 285deg,rgba(21,94,239,.95) 322deg,rgba(21,94,239,.06) 342deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;pointer-events:none;z-index:5}
-.work-card.is-active{border-color:rgba(21,94,239,.6);box-shadow:0 2rem 6rem rgba(0,0,0,.4),0 0 2.4rem rgba(21,94,239,.07)}
-.work-card.is-active::before{opacity:1}
-.work-card.is-active::after{opacity:.55}
+.work-card.is-active{border-color:rgba(255,255,255,.1);box-shadow:0 2rem 6rem rgba(0,0,0,.4)}
+.work-card.is-active::before{opacity:0}
+.work-card.is-active::after{opacity:0}
 .work-card.is-active,.work-card.is-next{will-change:transform}
 .work-card__media{position:relative;z-index:1;aspect-ratio:4/5;width:100%;overflow:hidden;border-radius:2rem;background:#090909;isolation:isolate;box-shadow:0 0 0 1px rgba(255,255,255,.035)}
 .work-card__media::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at 50% 0%,rgba(21,94,239,.1),transparent 48%);opacity:0;transition:opacity .35s ease}
@@ -35,7 +35,7 @@
 .work-card__actions{display:flex;align-items:center;gap:.7rem;flex:0 0 auto}
 .work-card__live,.work-card__github{display:grid;place-items:center;width:4.4rem;height:4.4rem;min-width:4.4rem;min-height:4.4rem;border:1px solid rgba(255,255,255,.18);border-radius:50%;background:#0d0d0d;color:var(--text);transition:background .25s ease,color .25s ease,border-color .25s ease,transform .25s ease}
 .work-card__live svg{width:1.8rem;height:1.8rem;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-.work-card__live:hover,.work-card__github:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.work-card__live:hover,.work-card__github:hover{background:#171717;border-color:rgba(255,255,255,.4);color:#fff;transform:scale(1.04)}
 .work-card__descriptor{margin-top:1.15rem;color:var(--muted);font-size:1.45rem;line-height:1.45}
 .work-card__meta-row{display:flex;align-items:center;gap:1.2rem;margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.09)}
 .work-card__pills{display:flex;align-items:center;flex-wrap:nowrap;gap:.65rem;min-width:0}
@@ -43,7 +43,7 @@
 .work-cursor{position:fixed;top:0;left:0;z-index:9996;display:grid;place-items:center;width:6.8rem;height:6.8rem;border-radius:50%;background:var(--accent);color:#fff;font:1.2rem var(--mono);pointer-events:none;opacity:0;visibility:hidden;transform:translate(-50%,-50%);box-shadow:0 .8rem 2.5rem rgba(21,94,239,.25)}
 .all-projects-button{display:flex;align-items:center;justify-content:center;gap:1rem;width:max-content;max-width:calc(100% - 3rem);margin:3rem auto 8rem;padding:1.4rem 2rem;border:1px solid rgba(255,255,255,.2);border-radius:999px;color:var(--text);background:#080808;font:1.2rem var(--mono);letter-spacing:.06em;text-decoration:none;transition:transform .3s var(--ease),border-color .3s var(--ease),background .3s var(--ease)}
 .all-projects-button svg{width:1.7rem;height:1.7rem;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-.all-projects-button:hover{transform:scale(.98);border-color:rgba(21,94,239,.55);background:#080d19}
+.all-projects-button:hover{transform:scale(1.02);border-color:rgba(255,255,255,.35);background:#0b0b0b}
 .work-card__live:focus-visible,.work-card__github:focus-visible,.github-link:focus-visible,.all-projects-button:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
 @media(hover:hover) and (pointer:fine){.work-card__media{cursor:none}}
 @media(min-width:70.01rem){
@@ -94,3 +94,5 @@
   .work-card__parallax,.work-card__image,.work-card__title-mask h3,.work-heading__line-inner{transform:none!important}
   .work-cursor{display:none!important}
 }
+
+@media(prefers-reduced-motion:reduce){.github-link:hover,.all-projects-button:hover,.work-card__live:hover,.work-card__github:hover{transform:none}}
