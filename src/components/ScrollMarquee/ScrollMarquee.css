@@ -6,3 +6,4 @@
 .scroll-marquee__content b{font-style:normal;color:rgba(21,94,239,.42);font:400 1.2rem var(--display);margin-left:0;text-shadow:0 0 1.4rem rgba(21,94,239,.25)}
 @media(max-width:70rem){.scroll-marquee{height:11rem;margin:4rem 0 5rem;transform:rotate(-1.1deg) scale(1.02)}.scroll-marquee__content{gap:2.6rem;padding-right:2.6rem}.scroll-marquee__content span{font-size:2.8rem}}
 @media(prefers-reduced-motion:reduce){.scroll-marquee__track{transform:none!important}}
+.scroll-marquee__content b{display:grid;place-items:center;flex:0 0 auto}.scroll-marquee__content b svg{width:1.4rem;height:1.4rem;fill:none;stroke:currentColor;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
