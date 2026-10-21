@@ -9,25 +9,25 @@ const services = [
   {
     number: "01",
     title: "WEBSITE DEVELOPMENT",
-    description: "Distinctive, responsive websites that make businesses look credible and turn attention into enquiries.",
+    description: "Websites that make brands stand out.",
     tags: "BUSINESS SITES · BRAND EXPERIENCES",
   },
   {
     number: "02",
     title: "WEB APPLICATIONS",
-    description: "Useful, reliable web apps with thoughtful interfaces, real functionality and solid engineering underneath.",
+    description: "Digital products built for real use.",
     tags: "PRODUCTS · DASHBOARDS · TOOLS",
   },
   {
     number: "03",
     title: "E-COMMERCE",
-    description: "Online stores built to make product discovery simple and the path to purchase feel effortless.",
+    description: "Online stores designed to convert.",
     tags: "ONLINE STORES · PRODUCT EXPERIENCES",
   },
   {
     number: "04",
     title: "AI INTEGRATION",
-    description: "Practical AI features that solve a real problem and fit naturally into your website or product.",
+    description: "Useful AI, built into your product.",
     tags: "AI FEATURES · AUTOMATION · API INTEGRATION",
   },
 ];
