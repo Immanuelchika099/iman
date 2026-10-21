@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 const services = [
   {
     number: "01",
-    title: "WEBSITE\nDEVELOPMENT",
+    title: "WEBSITE DEVELOPMENT",
     description: "Distinctive, responsive websites that make businesses look credible and turn attention into enquiries.",
     tags: "BUSINESS SITES · BRAND EXPERIENCES",
   },
