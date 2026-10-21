@@ -161,7 +161,7 @@ function Tech() {
                 <span>{service.number} / SERVICE</span>
                 <span className="service-card__arrow" aria-hidden="true">↗</span>
               </div>
-              <h3>{service.title.split("\\n").map((line, i) => <span key={i}>{line}</span>)}</h3>
+              <h3>{service.title}</h3>
               <p>{service.description}</p>
               <div className="service-card__bottom">
                 <span>{service.tags}</span>
