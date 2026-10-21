@@ -23,8 +23,6 @@ export function initSmoothScroll() {
     anchors: true,
   });
 
-  const update = () => ScrollTrigger.update();
-
   const raf = (time) => {
     lenis.raf(time * 1000);
   };
