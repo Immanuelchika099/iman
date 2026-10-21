@@ -10,7 +10,7 @@ const chapters = [
 ];
 
 function formatTimecode(progress) {
-  const totalFrames = Math.round(Math.max(0, Math.min(1, progress)) * 60 * 60 * 24);
+  const totalFrames = Math.round(Math.max(0, Math.min(0.999999, progress)) * 60 * 60 * 24);
   const frames = totalFrames % 24;
   const seconds = Math.floor(totalFrames / 24) % 60;
   const minutes = Math.floor(totalFrames / (24 * 60)) % 60;
