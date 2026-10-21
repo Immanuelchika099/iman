@@ -60,7 +60,7 @@ function ProjectCard({ project, cardRef, slotRef, index, total, cursorRef, sched
   }
 
   return (
-    <div className="work-card-slot" ref={slotRef} style={{ "--card-index": index }}>
+    <div className="work-card-slot" ref={slotRef} style={{ "--card-index": index, "--stack-offset": `${index * 12}px` }}>
       <article className="work-card" data-work-card ref={cardRef}>
         <div
           className="work-card__media"
@@ -70,7 +70,6 @@ function ProjectCard({ project, cardRef, slotRef, index, total, cursorRef, sched
         >
           <div className="work-card__parallax">
             <img
-              ref={imageRef}
               className="work-card__image"
               src={project.image}
               alt={project.alt}
@@ -129,6 +128,10 @@ function SelectedWork() {
   function animateHeading() {
     const lines = heading.current?.querySelectorAll(".work-heading__line-inner");
     if (!lines?.length) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      gsap.set(lines, { yPercent: 0 });
+      return;
+    }
     gsap.fromTo(lines, { yPercent: 115 }, {
       yPercent: 0,
       duration: 1,
@@ -154,7 +157,7 @@ function SelectedWork() {
       const activateCard = (activeIndex) => {
         cards.forEach((card, cardIndex) => {
           card.classList.toggle("is-active", cardIndex === activeIndex);
-          card.classList.toggle("is-next", cardIndex === activeIndex + 1);
+          card.classList.toggle("is-next", cardIndex === activeIndex - 1);
         });
       };
 
