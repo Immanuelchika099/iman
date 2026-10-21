@@ -71,22 +71,22 @@
   .work-head h2{font-size:clamp(5.8rem,15vw,8rem);margin-top:1.5rem}
   .github-link{width:4.4rem;height:4.4rem;margin-bottom:.2rem}
   .work-card-slot{top:calc(env(safe-area-inset-top, 0px) + 7.2rem);padding-bottom:7svh}
-  .work-card{top:calc(env(safe-area-inset-top, 0px) + 7.2rem);padding:1.1rem;border-radius:2.4rem}
-  .work-card__media{aspect-ratio:4/5;border-radius:1.7rem}
+  .work-card{top:calc(env(safe-area-inset-top, 0px) + 7.2rem);padding:1.2rem;border-radius:2.8rem}
+  .work-card__media{aspect-ratio:4/5;border-radius:2rem}
   .work-card__content{padding:1.6rem .3rem .3rem}
   .work-card__title-mask h3{font-size:clamp(3.4rem,9vw,5.8rem)}
   .work-card__live{width:4.6rem;height:4.6rem;min-width:4.6rem;min-height:4.6rem}
   .work-card__descriptor{font-size:1.4rem}
   .work-card__meta-row{margin-top:1.4rem;padding-top:1.2rem;align-items:flex-end}
   .work-card__pills{gap:.5rem}
-  .work-card__pill{font-size:1.05rem;padding:.5rem .7rem;min-height:2.5rem}
+  .work-card__pill{font-size:1.1rem;padding:.5rem .7rem;min-height:2.5rem}
   .work-card__github{width:4.4rem;height:4.4rem;min-width:4.4rem;min-height:4.4rem}
   .all-projects-button{margin:1rem auto 5rem;font-size:1.2rem}
   .work-cursor{display:none}
 }
 @media(max-width:380px){
   .work-card__title-mask h3{font-size:3.15rem}
-  .work-card__pill{font-size:1rem;padding:.45rem .55rem}
+  .work-card__pill{font-size:1.1rem;padding:.45rem .55rem}
   .work-card__meta-row{gap:.6rem}
 }
 @media(prefers-reduced-motion:reduce){
