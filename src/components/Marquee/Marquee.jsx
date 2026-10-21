@@ -6,6 +6,7 @@ function Marquee() {
   const track = useRef(null);
 
   useLayoutEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return undefined;
     const tween = gsap.to(track.current, {
       xPercent: -50,
       duration: 24,
