@@ -6,6 +6,7 @@ function Marquee() {
   const track = useRef(null);
 
   useLayoutEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return undefined;
     const tween = gsap.to(track.current, {
       xPercent: -50,
       duration: 24,
@@ -42,17 +43,17 @@ function Marquee() {
     <section className="marquee">
       <div className="marquee__track" ref={track}>
         <span>05+ PROJECTS</span>
-        <b>✳</b>
+        <b aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/></svg></b>
         <span>40+ SATISFIED CLIENTS</span>
-        <b>✳</b>
+        <b aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/></svg></b>
         <span>05+ TECHNOLOGIES</span>
-        <b>✳</b>
+        <b aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/></svg></b>
         <span>05+ PROJECTS</span>
-        <b>✳</b>
+        <b aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/></svg></b>
         <span>40+ SATISFIED CLIENTS</span>
-        <b>✳</b>
+        <b aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/></svg></b>
         <span>05+ TECHNOLOGIES</span>
-        <b>✳</b>
+        <b aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/></svg></b>
       </div>
     </section>
   );

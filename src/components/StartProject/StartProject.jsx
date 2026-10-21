@@ -44,7 +44,7 @@ function StartProject() {
     <main className="start-project">
       <div className="section-inner">
         <a className="start-project__back" href="/">
-          ← BACK TO PORTFOLIO
+          <svg className="start-project__back-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> BACK TO PORTFOLIO
         </a>
 
         <div className="start-project__intro">
@@ -140,7 +140,7 @@ function StartProject() {
 
           <button type="submit" disabled={submitting}>
             {submitting ? "SENDING..." : "SEND PROJECT INQUIRY"}
-            <span aria-hidden="true">→</span>
+            <span aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
           </button>
 
           {status && <p className="start-project__status">{status}</p>}
@@ -148,7 +148,7 @@ function StartProject() {
           <div className="start-project__email">
             <span>DON'T LIKE FORMS?</span>
             <a href="mailto:imanwahmed367@gmail.com">
-              SEND AN EMAIL <span aria-hidden="true">↗</span>
+              SEND AN EMAIL <span aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
             </a>
           </div>
         </form>
