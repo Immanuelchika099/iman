@@ -3,3 +3,5 @@
 .about__label{font-size:1.3rem}
 .about__block h2{font-size:1.3rem}
 .about__tags span,.about__start{font-size:1.3rem}
+
+.about a span svg{width:1.7rem;height:1.7rem;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
