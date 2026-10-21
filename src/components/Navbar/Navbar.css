@@ -43,3 +43,9 @@
   .navbar__menu-meta span:last-child{margin-top:1rem;color:var(--text)}
 }
 @media(prefers-reduced-motion:reduce){.navbar__menu-panel:before{animation:none}}
+
+/* Navigation labels should remain readable at a glance. */
+.navbar__links button{font-size:1.3rem}
+.navbar__availability{font-size:1.25rem}
+.navbar__menu-kicker,.navbar__menu-links button span,.navbar__menu-meta{font-size:1.25rem}
+@media(max-width:70rem){.navbar__menu-kicker,.navbar__menu-meta{font-size:1.25rem}.navbar__menu-links button span{font-size:1.2rem}}
