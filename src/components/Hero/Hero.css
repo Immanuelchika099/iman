@@ -18,6 +18,6 @@
 
 /* Keep hero supporting text clear and comfortably readable. */
 .hero__eyebrow,.hero__meta p:first-child{font-size:1.5rem}
-.hero__meta p:last-child{display:none}
+.hero__meta p:last-child{display:block}
 .hero__scroll{font-size:1.4rem}
 @media(max-width:70rem){.hero__meta{margin-top:3.2rem}.hero__meta p:first-child{font-size:1.45rem}}
