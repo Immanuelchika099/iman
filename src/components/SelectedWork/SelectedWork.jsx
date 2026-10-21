@@ -58,7 +58,6 @@ function ProjectCard({ project, index }) {
         <div className="work-card__bottom"><h3>{project.name}</h3><span className="work-card__arrow"><ExternalIcon /></span></div>
       </a>
       <div ref={info} className="work-card__info">
-        <p>{project.description}</p>
         <div className="work-card__slate" aria-label="Project credits">
           <span><small>ROLE</small>{project.role || "Design & Development"}</span>
           <span><small>STACK</small>{project.stack || project.type}</span>
