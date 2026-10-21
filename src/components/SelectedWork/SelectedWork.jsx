@@ -32,7 +32,7 @@ const projectCards = projects.map((project, index) => ({
   alt: `${project.name} — ${project.type} screenshot`,
 }));
 
-function ProjectCard({ project, cardRef, slotRef, index, total, cursorRef }) {
+function ProjectCard({ project, cardRef, slotRef, index, total, cursorRef, scheduleScrollRefresh }) {
 
   function handlePreviewError(event) {
     const img = event.currentTarget;
@@ -212,6 +212,7 @@ function SelectedWork() {
               cardRef={(node) => { cardRefs.current[index] = node; }}
               slotRef={(node) => { slotRefs.current[index] = node; }}
               cursorRef={cursorRef}
+              scheduleScrollRefresh={scheduleScrollRefresh}
             />
           ))}
         </div>
