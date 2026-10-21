@@ -213,7 +213,7 @@ function SelectedWork() {
         scrollTrigger: {
           trigger: nextSlot,
           start: "top 72%",
-          end: "top 16%",
+          end: "top 10%",
           scrub: 0.7,
         },
       });
@@ -242,12 +242,17 @@ function SelectedWork() {
       animateStacking(cards, slots);
 
       // The active frame gets a restrained accent; inactive frames remain neutral.
+      const activateCard = (activeIndex) => {
+        cards.forEach((card, cardIndex) => card.classList.toggle("is-active", cardIndex === activeIndex));
+      };
+      activateCard(0);
       cards.forEach((card, index) => {
         ScrollTrigger.create({
           trigger: slots[index],
-          start: "top 62%",
-          end: "bottom 38%",
-          toggleClass: { targets: card, className: "is-active" },
+          start: "top 10%",
+          end: "bottom top",
+          onEnter: () => activateCard(index),
+          onEnterBack: () => activateCard(index),
         });
       });
     }, section);
