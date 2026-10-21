@@ -58,7 +58,11 @@ function ProjectCard({ project, index }) {
         <div className="work-card__bottom"><h3>{project.name}</h3><span className="work-card__arrow"><ExternalIcon /></span></div>
       </a>
       <div ref={info} className="work-card__info">
-        <p>{project.description}</p>
+        <div className="work-card__slate" aria-label="Project credits">
+          <span><small>ROLE</small>{project.role || "Design & Development"}</span>
+          <span><small>STACK</small>{project.stack || project.type}</span>
+          <span><small>YEAR</small>{project.year || "2026"}</span>
+        </div>
         <div className="work-card__links">
           {project.repoUrl && <a className="work-card__icon" href={project.repoUrl} target="_blank" rel="noreferrer" aria-label={project.name + " GitHub repository"}><GitHubIcon /></a>}
           <a className="work-card__view" href={project.liveUrl} target="_blank" rel="noreferrer">VIEW LIVE SITE <span>↗</span></a>
@@ -73,8 +77,17 @@ function SelectedWork() {
   const track = useRef(null);
 
   useLayoutEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return undefined;
+    const isMobile = window.matchMedia("(max-width: 70rem)").matches;
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray("[data-work-card]");
+      if (isMobile) {
+        gsap.fromTo(cards, { opacity: 0, y: 28 }, {
+          opacity: 1, y: 0, duration: 0.75, stagger: 0.12, ease: "power3.out",
+          scrollTrigger: { trigger: section.current, start: "top 78%", once: true }
+        });
+        return;
+      }
       const viewport = section.current.querySelector(".selected-work__viewport");
       gsap.set(cards, { opacity: 0, y: 70, clipPath: "inset(8% 0 4% 0)" });
       cards.forEach((card) => {
@@ -97,11 +110,20 @@ function SelectedWork() {
           invalidateOnRefresh: true
         }
       });
-      timeline
-        .to(cards.slice(1), { opacity: 1, y: 0, clipPath: "inset(0% 0 0% 0)", duration: 0.22, stagger: 0.06, ease: "power3.out" }, 0.12)
-        .to(cards.slice(1).map((card) => card.querySelector("img")), { scale: 1, duration: 0.28, stagger: 0.06, ease: "power2.out" }, 0.12)
-        .to(cards.slice(1).map((card) => card.querySelector(".work-card__info")), { y: 0, opacity: 1, duration: 0.2, stagger: 0.06, ease: "power2.out" }, 0.2)
-        .to(track.current, { x: () => -getDistance(), duration: 1, ease: "none" }, 0.55);
+      const sceneDuration = Math.max(1, cards.length - 1);
+      const workScroll = viewport.querySelector(".work-scroll");
+      cards.slice(1).forEach((card) => {
+        const revealAt = gsap.utils.clamp(
+          0.08,
+          sceneDuration - 0.42,
+          ((card.offsetLeft - workScroll.clientWidth * 0.55) / Math.max(1, getDistance())) * sceneDuration
+        );
+        timeline
+          .to(card, { opacity: 1, y: 0, clipPath: "inset(0% 0 0% 0)", duration: 0.5, ease: "power3.out" }, revealAt)
+          .to(card.querySelector("img"), { scale: 1, duration: 0.75, ease: "power2.out" }, revealAt)
+          .to(card.querySelector(".work-card__info"), { y: 0, opacity: 1, duration: 0.45, ease: "power2.out" }, revealAt + 0.08);
+      });
+      timeline.to(track.current, { x: () => -getDistance(), duration: sceneDuration, ease: "none" }, 0);
       ScrollTrigger.refresh();
       return () => timeline.scrollTrigger?.kill();
     }, section);
