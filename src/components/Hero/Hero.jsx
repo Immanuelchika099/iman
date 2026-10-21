@@ -45,7 +45,8 @@ function Hero() {
             ease: "power2.inOut",
             duration: 0.78,
           }, 0)
-          .to(".hero__image-frame", { opacity: 0, filter: "blur(12px)", ease: "power1.in", duration: 0.18 }, 0.82);
+          .to(".hero__image-frame", { opacity: 0, filter: "blur(12px)", ease: "power1.in", duration: 0.18 }, 0.82)
+          .to(".hero__transition-vignette", { opacity: 1, ease: "none", duration: 0.18 }, 0.82);
       }
 
       return () => {
