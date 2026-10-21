@@ -59,7 +59,7 @@ function ProjectCard({ project, cardRef, slotRef, index, total, cursorRef }) {
 
   function showCursor(event) {
     if (!cursorRef.current || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
-    gsap.set(cursorRef.current, { x: event.clientX, y: event.clientY, autoAlpha: 1, scale: 1 });
+    gsap.set(cursorRef.current, { x: event.clientX, y: event.clientY, xPercent: -50, yPercent: -50, autoAlpha: 1, scale: 1 });
   }
 
   function moveCursor(event) {
@@ -152,6 +152,7 @@ function SelectedWork() {
     const meta = card.querySelector(".work-card__meta-row");
     const media = card.querySelector(".work-card__parallax");
     const indexPill = card.querySelector(".work-card__index");
+    const indexNumber = card.querySelector(".work-card__index-number");
 
     gsap.fromTo(card,
       { clipPath: "inset(8% 0 8% 0 round 28px)", opacity: 0.55 },
@@ -187,6 +188,13 @@ function SelectedWork() {
     gsap.fromTo(indexPill, { yPercent: 35, opacity: 0 }, {
       yPercent: 0,
       opacity: 1,
+      ease: "power2.out",
+      scrollTrigger: { trigger: slot, start: "top 82%", end: "top 55%", scrub: 0.45 },
+    });
+
+    // Roll the slate number into view as this project becomes active.
+    gsap.fromTo(indexNumber, { yPercent: 110 }, {
+      yPercent: 0,
       ease: "power2.out",
       scrollTrigger: { trigger: slot, start: "top 82%", end: "top 55%", scrub: 0.45 },
     });
