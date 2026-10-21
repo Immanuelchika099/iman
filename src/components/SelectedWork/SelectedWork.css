@@ -10,9 +10,9 @@
 .github-link{display:grid;place-items:center;width:4.8rem;height:4.8rem;flex:0 0 auto;margin-bottom:.5rem;border:1px solid var(--line);border-radius:50%;color:var(--text);transition:color .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease)}
 .github-link svg,.work-card__github svg{width:2rem;height:2rem;fill:currentColor}
 .github-link:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-.2rem)}
-.work-stack{position:relative;display:flex;flex-direction:column;gap:0}
-.work-card-slot{position:relative;min-height:94svh;padding-bottom:8svh;z-index:calc(10 + var(--card-index));}
-.work-card{position:sticky;top:calc(env(safe-area-inset-top, 0px) + 8.2rem);width:100%;padding:1.4rem;border:1px solid rgba(255,255,255,.08);border-radius:2.8rem;background:rgba(255,255,255,.03);box-shadow:0 2.5rem 8rem rgba(0,0,0,.25);overflow:hidden;will-change:transform,opacity,clip-path,filter;isolation:isolate}
+.work-stack{position:relative;display:flex;flex-direction:column;gap:0;padding-bottom:38svh}
+.work-card-slot{position:sticky;top:calc(env(safe-area-inset-top, 0px) + 8.2rem);padding-bottom:8svh;z-index:calc(10 + var(--card-index));}
+.work-card{position:relative;width:100%;padding:1.4rem;border:1px solid rgba(255,255,255,.08);border-radius:2.8rem;background:rgba(255,255,255,.03);box-shadow:0 2.5rem 8rem rgba(0,0,0,.25);overflow:hidden;will-change:transform,opacity,clip-path,filter;isolation:isolate}
 .work-card::before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(ellipse at 50% 30%,rgba(21,94,239,.1),transparent 60%);opacity:0;pointer-events:none;z-index:0;transition:opacity .5s ease}
 .work-card::after{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:conic-gradient(from 0deg,transparent 0deg,transparent 285deg,rgba(21,94,239,.95) 322deg,rgba(21,94,239,.06) 342deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transform:rotate(0deg);pointer-events:none;z-index:5}
 .work-card.is-active{border-color:rgba(255,255,255,.13);box-shadow:0 2rem 7rem rgba(0,0,0,.4),0 0 2.8rem rgba(21,94,239,.06)}
@@ -62,7 +62,7 @@
   .work-card__descriptor{font-size:1.55rem}
   .work-card__meta-row{margin-top:1.8rem}
   .work-card__pill{font-size:1.15rem}
-  .work-card-slot{min-height:100svh;padding-bottom:10svh}
+  .work-card-slot{top:calc(env(safe-area-inset-top, 0px) + 8.2rem);padding-bottom:10svh}
 }
 @media(max-width:70rem){
   .selected-work{padding:10rem 0 0}
@@ -70,7 +70,7 @@
   .work-head{margin-bottom:3.2rem;align-items:flex-end}
   .work-head h2{font-size:clamp(5.8rem,15vw,8rem);margin-top:1.5rem}
   .github-link{width:4.4rem;height:4.4rem;margin-bottom:.2rem}
-  .work-card-slot{min-height:88svh;padding-bottom:7svh}
+  .work-card-slot{top:calc(env(safe-area-inset-top, 0px) + 7.2rem);padding-bottom:7svh}
   .work-card{top:calc(env(safe-area-inset-top, 0px) + 7.2rem);padding:1.1rem;border-radius:2.4rem}
   .work-card__media{aspect-ratio:4/5;border-radius:1.7rem}
   .work-card__content{padding:1.6rem .3rem .3rem}
@@ -91,7 +91,8 @@
 }
 @media(prefers-reduced-motion:reduce){
   .selected-work{padding-top:8rem}
-  .work-card-slot{min-height:0;padding-bottom:2.5rem}
+  .work-stack{padding-bottom:0}
+  .work-card-slot{position:relative;top:auto;padding-bottom:2.5rem}
   .work-card{position:relative;top:auto;opacity:1!important;transform:none!important;filter:none!important;clip-path:none!important;animation:none!important}
   .work-card::after{animation:none!important}
   .work-card__parallax{transform:none!important}
