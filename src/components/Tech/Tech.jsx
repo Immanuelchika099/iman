@@ -10,25 +10,25 @@ const services = [
     number: "01",
     title: "WEBSITE DEVELOPMENT",
     description: "Websites that make brands stand out.",
-    tags: "BUSINESS SITES · BRAND EXPERIENCES",
+    icon: "globe",
   },
   {
     number: "02",
     title: "WEB APPLICATIONS",
     description: "Digital products built for real use.",
-    tags: "PRODUCTS · DASHBOARDS · TOOLS",
+    icon: "app",
   },
   {
     number: "03",
     title: "E-COMMERCE",
     description: "Online stores designed to convert.",
-    tags: "ONLINE STORES · PRODUCT EXPERIENCES",
+    icon: "bag",
   },
   {
     number: "04",
     title: "AI INTEGRATION",
     description: "Useful AI, built into your product.",
-    tags: "AI FEATURES · AUTOMATION · API INTEGRATION",
+    icon: "sparkles",
   },
 ];
 
@@ -59,6 +59,28 @@ function Icon({ type }) {
   return <svg {...common}><circle cx="24" cy="24" r="17"/><path d="M15 29c2-7 5-11 9-11s7 4 9 11M18 18l-3-5M30 18l3-5"/></svg>;
 }
 
+
+function ServiceIcon({ type }) {
+  const common = {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.5,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    "aria-hidden": true,
+  };
+
+  if (type === "globe") return <svg {...common}><circle cx="12" cy="12" r="10" /><path d="M2 12h20" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z" /></svg>;
+  if (type === "app") return <svg {...common}><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M3 9h18" /><path d="M7 6.5h.01M10 6.5h.01M13 6.5h.01" /></svg>;
+  if (type === "bag") return <svg {...common}><path d="M5 8h14l1 13H4L5 8Z" /><path d="M9 8V6a3 3 0 0 1 6 0v2" /></svg>;
+  return <svg {...common}><path d="m12 3 1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2L12 3Z" /><path d="m19 14 1 3 3 1-3 1-1 3-1-3-3-1 3-1 1-3Z" /></svg>;
+}
+
+function ArrowUpRight() {
+  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 17 17 7" /><path d="M7 7h10v10" /></svg>;
+}
+
 function Tech() {
   const root = useRef(null);
   const viewport = useRef(null);
@@ -75,28 +97,32 @@ function Tech() {
 
       measure();
 
-      gsap.fromTo(".tech__intro > *", { y: 35, opacity: 0 }, {
-        y: 0, opacity: 1, duration: 0.85, stagger: 0.1, ease: "power4.out",
-        scrollTrigger: { trigger: root.current, start: "top 78%", once: true },
-      });
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-      gsap.fromTo(cards, { y: 45, opacity: 0 }, {
-        y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power4.out",
-        scrollTrigger: { trigger: ".services-grid", start: "top 82%", once: true },
-      });
+      if (!reducedMotion) {
+        gsap.fromTo(".tech__intro > *", { y: 24, opacity: 0 }, {
+          y: 0, opacity: 1, duration: 0.7, stagger: 0.1, ease: "power3.out",
+          scrollTrigger: { trigger: root.current, start: "top 82%", once: true },
+        });
 
-      gsap.fromTo(".tech__tools-label", { y: 25, opacity: 0 }, {
-        y: 0, opacity: 1, duration: 0.7, ease: "power3.out",
-        scrollTrigger: { trigger: ".tech__tools", start: "top 85%", once: true },
-      });
+        gsap.fromTo(cards, { y: 24, opacity: 0 }, {
+          y: 0, opacity: 1, duration: 0.65, stagger: 0.1, ease: "power3.out",
+          scrollTrigger: { trigger: ".services-grid", start: "top 86%", once: true },
+        });
 
-      gsap.fromTo(techCards, { y: 25, opacity: 0 }, {
-        y: 0, opacity: 1, duration: 0.65, stagger: 0.035, ease: "power3.out",
-        scrollTrigger: { trigger: viewport.current, start: "top 90%", once: true },
-      });
+        gsap.fromTo(".tech__tools-label", { y: 20, opacity: 0 }, {
+          y: 0, opacity: 1, duration: 0.6, ease: "power3.out",
+          scrollTrigger: { trigger: ".tech__tools", start: "top 88%", once: true },
+        });
+
+        gsap.fromTo(techCards, { y: 20, opacity: 0 }, {
+          y: 0, opacity: 1, duration: 0.6, stagger: 0.035, ease: "power3.out",
+          scrollTrigger: { trigger: viewport.current, start: "top 90%", once: true },
+        });
+      }
 
       const tick = () => {
-        if (!paused.current && setWidth.current) {
+        if (!reducedMotion && !paused.current && setWidth.current) {
           viewport.current.scrollLeft += 0.75;
           if (viewport.current.scrollLeft >= setWidth.current) viewport.current.scrollLeft -= setWidth.current;
         }
@@ -148,33 +174,34 @@ function Tech() {
       <div className="section-inner">
         <div className="tech__intro">
           <div>
-            <span className="section-kicker">SERVICES / WHAT I BUILD</span>
+            <span className="section-kicker">SERVICES</span>
             <h2>BUILT FOR<br /><em>WHAT'S NEXT.</em></h2>
           </div>
-          <span>SOFTWARE ENGINEERING<br />DESIGN · CODE · AI</span>
         </div>
 
         <div className="services-grid">
           {services.map((service) => (
-            <a className="service-card" href="/start-a-project" key={service.number}>
+            <a
+              className="service-card"
+              href="/start-a-project"
+              key={service.number}
+              aria-label={"Start a project: " + service.title}
+            >
               <div className="service-card__top">
-                <span>{service.number} / SERVICE</span>
-                <span className="service-card__arrow" aria-hidden="true">↗</span>
+                <span className="service-card__icon"><ServiceIcon type={service.icon} /></span>
+                <span className="service-card__number">{service.number}</span>
               </div>
               <h3>{service.title}</h3>
               <p>{service.description}</p>
-              <div className="service-card__bottom">
-                <span>{service.tags}</span>
-                <span className="service-card__link">LET'S TALK <b>↗</b></span>
-              </div>
+              <span className="service-card__arrow"><ArrowUpRight /></span>
             </a>
           ))}
         </div>
+        <a className="services-cta" href="/start-a-project">LET'S TALK <ArrowUpRight /></a>
 
         <div className="tech__tools">
           <div className="tech__tools-label">
             <span className="section-kicker">THE TOOLKIT</span>
-            <span>TOOLS I USE TO MAKE IT REAL.</span>
           </div>
           <div className="tech__viewport" ref={viewport} aria-label="Technologies I work with">
             <div className="tech__words" ref={track}>
