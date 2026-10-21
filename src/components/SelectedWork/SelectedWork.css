@@ -13,7 +13,7 @@
 .work-card-slot:last-child{padding-bottom:0}
 .work-card{position:relative;width:100%;padding:1.2rem;border:1px solid rgba(255,255,255,.1);border-radius:2.8rem;background:#080808;box-shadow:0 2rem 6rem rgba(0,0,0,.28);overflow:hidden;isolation:isolate;transform-origin:center top}
 .work-card::before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(ellipse at 50% 30%,rgba(21,94,239,.1),transparent 60%);opacity:0;pointer-events:none;z-index:0;transition:opacity .35s ease}
-.work-card::after{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:conic-gradient(from 0deg,transparent 0deg,transparent 285deg,rgba(21,94,239,.95) 322deg,rgba(21,94,239,.06) 342deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;pointer-events:none;z-index:5}
+.work-card::after{content:none}
 .work-card.is-active{border-color:rgba(255,255,255,.1);box-shadow:0 2rem 6rem rgba(0,0,0,.4)}
 .work-card.is-active::before{opacity:0}
 .work-card.is-active::after{opacity:0}
