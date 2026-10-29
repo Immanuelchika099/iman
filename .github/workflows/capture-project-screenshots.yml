@@ -1,0 +1,96 @@
+name: Capture real project previews
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "src/data/projects.js"
+      - ".github/workflows/capture-project-screenshots.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  capture:
+    if: ${{ !contains(github.event.head_commit.message, '[screenshots]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Playwright Chromium
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+
+      - name: Capture the actual live websites
+        run: |
+          mkdir -p public/images/projects
+          node <<'NODE'
+          const { chromium } = require('playwright');
+          const fs = require('node:fs/promises');
+
+          const sites = [
+            ['pr-team', 'https://pr-team.vercel.app/'],
+            ['luxe-hair', 'https://luxehair-shop.vercel.app/'],
+            ['kaizerbrix', 'https://kaizerbrix.vercel.app/'],
+            ['evolv', 'https://evolv-track.vercel.app/'],
+          ];
+
+          (async () => {
+            const browser = await chromium.launch({ headless: true });
+            try {
+              for (const [name, url] of sites) {
+                const page = await browser.newPage({
+                  viewport: { width: 1440, height: 1000 },
+                  deviceScaleFactor: 1,
+                });
+                try {
+                  const response = await page.goto(url, {
+                    waitUntil: 'domcontentloaded',
+                    timeout: 60000,
+                  });
+                  await page.waitForTimeout(5000);
+                  if (!response || !response.ok()) {
+                    throw new Error(`${url} returned ${response?.status() ?? 'no response'}`);
+                  }
+                  await page.screenshot({
+                    path: `public/images/projects/${name}.png`,
+                    type: 'png',
+                    fullPage: false,
+                    animations: 'disabled',
+                  });
+                  const stat = await fs.stat(`public/images/projects/${name}.png`);
+                  if (stat.size < 10000) throw new Error(`Screenshot for ${name} looks unexpectedly small (${stat.size} bytes)`);
+                  console.log(`Captured ${name}: ${stat.size} bytes`);
+                } finally {
+                  await page.close();
+                }
+              }
+            } finally {
+              await browser.close();
+            }
+          })().catch(error => {
+            console.error(error);
+            process.exit(1);
+          });
+          NODE
+
+      - name: Commit screenshots to the repository
+        run: |
+          if git status --short public/images/projects | grep -q .; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add public/images/projects/*.png
+            git commit -m "Capture local project screenshots [screenshots]"
+            git push
+          else
+            echo "Screenshots are unchanged."
+          fi
