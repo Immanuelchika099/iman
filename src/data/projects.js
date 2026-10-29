@@ -10,8 +10,7 @@ export const projects = [
     className: "project-pr",
     liveUrl: "https://pr-team.vercel.app",
     repoUrl: "https://github.com/Immanuelchika099/pr-team",
-    previewImage: "https://image.thum.io/get/width/1200/crop/800/noanimate/https://pr-team.vercel.app/",
-    previewFallback: "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fpr-team.vercel.app%2F?w=1200"
+    previewImage: "/images/projects/pr-team.png"
   },
   {
     id: "02",
@@ -24,8 +23,7 @@ export const projects = [
     className: "project-luxe",
     liveUrl: "https://luxehair-shop.vercel.app",
     repoUrl: "https://github.com/Immanuelchika099/luxe-hair",
-    previewImage: "https://image.thum.io/get/width/1200/crop/800/noanimate/https://luxehair-shop.vercel.app/",
-    previewFallback: "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fluxehair-shop.vercel.app%2F?w=1200"
+    previewImage: "/images/projects/luxe-hair.png"
   },
   {
     id: "03",
@@ -38,8 +36,7 @@ export const projects = [
     className: "project-kaizerbrix",
     liveUrl: "https://kaizerbrix.vercel.app",
     repoUrl: "https://github.com/Immanuelchika099/kaizerbrix",
-    previewImage: "https://image.thum.io/get/width/1200/crop/800/noanimate/https://kaizerbrix.vercel.app/",
-    previewFallback: "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fkaizerbrix.vercel.app%2F?w=1200"
+    previewImage: "/images/projects/kaizerbrix.png"
   },
   {
     id: "04",
@@ -52,7 +49,6 @@ export const projects = [
     className: "project-evolv",
     liveUrl: "https://evolv-track.vercel.app",
     repoUrl: "https://github.com/Immanuelchika099/evolv",
-    previewImage: "https://image.thum.io/get/width/1200/crop/800/noanimate/https://evolv-track.vercel.app/",
-    previewFallback: "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fevolv-track.vercel.app%2F?w=1200"
+    previewImage: "/images/projects/evolv.png"
   }
 ];
