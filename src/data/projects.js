@@ -10,7 +10,7 @@ export const projects = [
     className: "project-pr",
     liveUrl: "https://pr-team.vercel.app",
     repoUrl: "https://github.com/Immanuelchika099/pr-team",
-    previewImage: "https://image.thum.io/get/width/1200/crop/800/wait/3/noanimate/https://pr-team.vercel.app/",
+    previewImage: "https://image.thum.io/get/width/1200/crop/800/noanimate/https://pr-team.vercel.app/",
     previewFallback: "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fpr-team.vercel.app%2F?w=1200"
   },
   {
@@ -24,7 +24,7 @@ export const projects = [
     className: "project-luxe",
     liveUrl: "https://luxehair-shop.vercel.app",
     repoUrl: "https://github.com/Immanuelchika099/luxe-hair",
-    previewImage: "https://image.thum.io/get/width/1200/crop/800/wait/3/noanimate/https://luxehair-shop.vercel.app/",
+    previewImage: "https://image.thum.io/get/width/1200/crop/800/noanimate/https://luxehair-shop.vercel.app/",
     previewFallback: "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fluxehair-shop.vercel.app%2F?w=1200"
   },
   {
@@ -38,7 +38,7 @@ export const projects = [
     className: "project-kaizerbrix",
     liveUrl: "https://kaizerbrix.vercel.app",
     repoUrl: "https://github.com/Immanuelchika099/kaizerbrix",
-    previewImage: "https://image.thum.io/get/width/1200/crop/800/wait/3/noanimate/https://kaizerbrix.vercel.app/",
+    previewImage: "https://image.thum.io/get/width/1200/crop/800/noanimate/https://kaizerbrix.vercel.app/",
     previewFallback: "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fkaizerbrix.vercel.app%2F?w=1200"
   },
   {
@@ -52,7 +52,7 @@ export const projects = [
     className: "project-evolv",
     liveUrl: "https://evolv-track.vercel.app",
     repoUrl: "https://github.com/Immanuelchika099/evolv",
-    previewImage: "https://image.thum.io/get/width/1200/crop/800/wait/3/noanimate/https://evolv-track.vercel.app/",
+    previewImage: "https://image.thum.io/get/width/1200/crop/800/noanimate/https://evolv-track.vercel.app/",
     previewFallback: "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fevolv-track.vercel.app%2F?w=1200"
   }
 ];
