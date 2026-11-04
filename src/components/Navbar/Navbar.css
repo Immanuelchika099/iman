@@ -3,45 +3,50 @@
 .navbar__brand,.navbar__links button,.navbar__menu{border:0;background:none;color:inherit;cursor:pointer}
 .navbar__brand{justify-self:start;font:700 1.7rem var(--display);letter-spacing:-.04em}
 .navbar__links{display:flex;justify-content:center;gap:2.8rem}
-.navbar__links button{font:500 1.05rem var(--mono);letter-spacing:.08em;color:var(--muted);transition:color .3s var(--ease)}
+.navbar__links button{font:500 1.3rem var(--mono);letter-spacing:.08em;color:var(--muted);transition:color .3s var(--ease)}
 .navbar__links button:hover{color:var(--text)}
-.navbar__availability{justify-self:end;font:1rem var(--mono);color:var(--muted);letter-spacing:.04em;display:flex;align-items:center;gap:.8rem;white-space:nowrap}
-.navbar__availability i{width:.55rem;height:.55rem;border-radius:50%;background:var(--accent);box-shadow:0 0 .9rem rgba(21,94,239,.45)}
+.navbar__availability{justify-self:end;font:1.25rem var(--mono);color:var(--muted);letter-spacing:.04em;display:flex;align-items:center;gap:.8rem;white-space:nowrap}
+.navbar__availability i{width:.55rem;height:.55rem;border-radius:50%;background:var(--accent);box-shadow:0 0 .9rem rgba(255,0,0,.45)}
 .navbar__menu{width:4.2rem;height:4.2rem;position:relative;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);transition:background .3s ease,transform .3s ease}
 .navbar__menu:hover{background:rgba(255,255,255,.13);transform:scale(1.04)}
 .navbar__menu span{position:absolute;left:1.15rem;right:1.15rem;height:1px;background:var(--text);transition:transform .45s cubic-bezier(.77,0,.18,1),top .45s cubic-bezier(.77,0,.18,1)}
 .navbar__menu span:first-child{top:1.55rem}.navbar__menu span:last-child{top:2.25rem}
 .navbar.is-open .navbar__menu span:first-child{top:1.9rem;transform:rotate(45deg)}
 .navbar.is-open .navbar__menu span:last-child{top:1.9rem;transform:rotate(-45deg)}
-.navbar__menu-panel{position:fixed;inset:0;z-index:90;visibility:hidden;opacity:0;background:#050505;color:var(--text);clip-path:circle(0% at calc(100% - 4rem) 3.4rem);overflow:hidden}
-.navbar__menu-panel:before{content:"";position:absolute;inset:-20%;background:radial-gradient(circle at 18% 30%,rgba(21,94,239,.11),transparent 24%),radial-gradient(circle at 82% 65%,rgba(21,94,239,.055),transparent 28%);animation:menuGradient 14s ease-in-out infinite alternate}
-.navbar__menu-content{position:relative;height:100%;padding:8rem clamp(2rem,6vw,9rem) 4rem;display:flex;flex-direction:column}
-.navbar__menu-links{margin:auto 0;display:flex;flex-direction:column;align-items:flex-start}
-.navbar__menu-links button{width:min(100%,100rem);display:grid;grid-template-columns:7rem 1fr auto;align-items:center;gap:2rem;padding:1rem 0;border:0;background:none;color:var(--text);cursor:pointer;text-align:left;opacity:0}
-.navbar__menu-links button span{font:1rem var(--mono);color:var(--muted)}
-.navbar__menu-links button strong{font:500 clamp(5rem,9vw,12rem)/.82 var(--display);letter-spacing:-.08em;transition:color .3s ease,transform .4s ease}
-.navbar__menu-links button em{font:400 2rem var(--display);font-style:normal;color:var(--accent);opacity:0;transform:translate(-1rem,1rem);transition:opacity .35s ease,transform .35s ease}
-.navbar__menu-links button:hover strong{color:var(--accent);transform:translateX(1.2rem)}
+.navbar__menu-panel{position:fixed;inset:0;z-index:90;visibility:hidden;opacity:0;pointer-events:none;overflow:hidden;background:transparent;color:#080808}
+.navbar__menu-red,.navbar__menu-white{position:absolute;inset:0;will-change:transform}
+.navbar__menu-red{background:#FF0000}
+.navbar__menu-white{display:flex;flex-direction:column;background:#fff;color:#080808}
+.navbar__menu-content{position:relative;width:100%;height:100%;padding:10rem clamp(2rem,6vw,9rem) 3rem;display:flex;flex-direction:column}
+.navbar__menu-links{margin:auto 0;display:flex;flex-direction:column;align-items:flex-start;width:100%}
+.navbar__menu-item-mask{width:100%;overflow:hidden}
+.navbar__menu-links button{width:min(100%,110rem);display:grid;grid-template-columns:7rem 1fr auto;align-items:center;gap:2rem;padding:1rem 0;border:0;background:none;color:#080808;cursor:pointer;text-align:left;opacity:0;will-change:transform}
+.navbar__menu-links button span{font:1.25rem var(--mono);color:#FF0000}
+.navbar__menu-links button strong{font:500 clamp(5rem,9vw,12rem)/.88 var(--display);letter-spacing:-.08em;transition:color .3s ease,transform .4s ease}
+.navbar__menu-links button em{font:400 2rem var(--display);font-style:normal;color:#FF0000;opacity:0;transform:translate(-1rem,1rem);transition:opacity .35s ease,transform .35s ease}
+.navbar__menu-links button:hover strong{color:#FF0000;transform:translateX(1.2rem)}
 .navbar__menu-links button:hover em{opacity:1;transform:none}
-@keyframes menuGradient{from{transform:translate3d(-2%, -1%,0) scale(1)}to{transform:translate3d(3%,2%,0) scale(1.08)}}
+.navbar__menu-links button em svg{width:1.8rem;height:1.8rem;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.navbar__menu-footer{display:flex;justify-content:space-between;gap:2rem;padding-top:1.6rem;border-top:1px solid rgba(0,0,0,.16);font:1.1rem var(--mono);letter-spacing:.06em;color:#666}
+.navbar__resume-arrow{display:inline-block;width:1.15rem;height:1.15rem;margin-left:.35rem;vertical-align:middle;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 @media(max-width:70rem){
   .navbar{top:1.4rem;width:calc(100% - 2.8rem);height:5.8rem}
   .navbar__pill{padding-left:1.8rem;gap:1rem}
   .navbar__links,.navbar__availability{display:none}
   .navbar__menu{justify-self:end}
-  .navbar__menu-panel{clip-path:circle(0% at calc(100% - 3.2rem) 4.3rem)}
-  .navbar__menu-content{padding:8rem 1.8rem 2.8rem}
+  .navbar__menu-content{padding:9rem 1.8rem 2.4rem}
   .navbar__menu-links{margin:auto 0}
-  .navbar__menu-links button{grid-template-columns:3rem 1fr auto;gap:1rem;padding:.7rem 0}
+  .navbar__menu-links button{grid-template-columns:3rem 1fr auto;gap:1rem;padding:.8rem 0}
   .navbar__menu-links button strong{font-size:clamp(4.8rem,17vw,7.5rem)}
+  .navbar__menu-links button span{font-size:1.2rem}
   .navbar__menu-links button em{font-size:1.6rem}
+  .navbar__menu-footer{flex-wrap:wrap;gap:.8rem 1.6rem;font-size:.95rem}
 }
-@media(prefers-reduced-motion:reduce){.navbar__menu-panel:before{animation:none}}
-
-/* Navigation labels should remain readable at a glance. */
-.navbar__links button{font-size:1.3rem}
-.navbar__availability{font-size:1.25rem}
-.navbar__menu-links button span{font-size:1.25rem}
-@media(max-width:70rem){.navbar__menu-links button span{font-size:1.2rem}}
-
-.navbar__resume-arrow{display:inline-block;width:1.15rem;height:1.15rem;margin-left:.35rem;vertical-align:middle;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}.navbar__menu-links button em svg{width:1.6rem;height:1.6rem;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:380px){
+  .navbar__menu-links button strong{font-size:clamp(4.4rem,16vw,6.2rem)}
+  .navbar__menu-content{padding-left:1.5rem;padding-right:1.5rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .navbar__menu-panel{transition:none}
+  .navbar__menu-links button strong,.navbar__menu-links button em{transition:none}
+}
