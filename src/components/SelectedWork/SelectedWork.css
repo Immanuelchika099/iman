@@ -9,7 +9,7 @@
 .github-link svg,.work-card__github svg{width:2rem;height:2rem;fill:currentColor}
 .github-link:hover{color:var(--text);border-color:rgba(255,255,255,.35);transform:scale(1.04)}
 .work-stack{position:relative;display:block;padding:0;isolation:isolate}
-.work-card-slot{position:sticky;top:calc(env(safe-area-inset-top, 0px) + 8.4rem + var(--stack-offset, 0px));padding-bottom:1.2rem;z-index:calc(10 + var(--card-index))}
+.work-card-slot{position:relative;top:auto;padding-bottom:3.2rem;z-index:auto}
 .work-card-slot:last-child{padding-bottom:0}
 .work-card{position:relative;width:100%;padding:1.2rem;border:1px solid rgba(255,255,255,.1);border-radius:2.8rem;background:#080808;box-shadow:0 2rem 6rem rgba(0,0,0,.28);overflow:hidden;isolation:isolate;transform-origin:center top}
 .work-card::before{content:none}
@@ -57,7 +57,7 @@
   .work-card__descriptor{font-size:1.55rem}
   .work-card__meta-row{margin-top:1.8rem}
   .work-card__pill{font-size:1.15rem}
-  .work-card-slot{top:calc(env(safe-area-inset-top, 0px) + 9.6rem + var(--stack-offset, 0px));padding-bottom:1.2rem}
+  .work-card-slot{top:auto;padding-bottom:3.6rem}
 }
 @media(max-width:70rem){
   .selected-work{padding:8rem 0 0}
@@ -73,7 +73,7 @@
   .work-card__meta-row{margin-top:1.3rem;padding-top:1.1rem}
   .work-card__pills{gap:.5rem}
   .work-card__pill{font-size:1.05rem;padding:.5rem .65rem;min-height:2.5rem}
-  .work-card-slot{top:calc(env(safe-area-inset-top, 0px) + 8.4rem + var(--stack-offset, 0px));padding-bottom:1.2rem}
+  .work-card-slot{top:auto;padding-bottom:2.8rem}
   .all-projects-button{margin:2.5rem auto 6rem;font-size:1.2rem}
   .work-cursor{display:none}
 }
@@ -87,7 +87,7 @@
 }
 @media(prefers-reduced-motion:reduce){
   .selected-work{padding-top:8rem}
-  .work-card-slot{position:relative;top:auto;padding-bottom:2rem;z-index:auto}
+  .work-card-slot{position:relative;top:auto;padding-bottom:2.8rem;z-index:auto}
   .work-card{position:relative;transform:none!important;will-change:auto}
   .work-card__shade{opacity:0!important}
   .work-card::after{animation:none!important}
