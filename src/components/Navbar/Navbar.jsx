@@ -13,7 +13,7 @@ const links = [
 function Navbar() {
   const nav = useRef(null);
   const menuPanel = useRef(null);
-  const redPanel = useRef(null);
+  const accentPanel = useRef(null);
   const whitePanel = useRef(null);
   const menuItems = useRef([]);
   const [open, setOpen] = useState(false);
@@ -87,12 +87,12 @@ function Navbar() {
 
     if (open) {
       gsap.set(panel, { autoAlpha: 1, pointerEvents: "auto" });
-      gsap.set([redPanel.current, whitePanel.current], { xPercent: 100 });
+      gsap.set([accentPanel.current, whitePanel.current], { xPercent: 100 });
       gsap.set(items, { yPercent: 110, opacity: 0 });
 
       const tl = gsap.timeline({ defaults: { ease: "power3.inOut" } });
 
-      tl.to(redPanel.current, { xPercent: 0, duration: 0.55 }, 0)
+      tl.to(accentPanel.current, { xPercent: 0, duration: 0.55 }, 0)
         .to(whitePanel.current, { xPercent: 0, duration: 0.55 }, 0.1)
         .to(
           items,
@@ -113,7 +113,7 @@ function Navbar() {
       defaults: { ease: "power3.inOut" },
       onComplete: () => {
         gsap.set(panel, { autoAlpha: 0, pointerEvents: "none" });
-        gsap.set([redPanel.current, whitePanel.current], { xPercent: 100 });
+        gsap.set([accentPanel.current, whitePanel.current], { xPercent: 100 });
         gsap.set(items, { yPercent: 110, opacity: 0 });
       },
     });
@@ -125,7 +125,7 @@ function Navbar() {
       stagger: 0.025,
       ease: "power2.in",
     })
-      .to([whitePanel.current, redPanel.current], { xPercent: 100, duration: 0.48 }, 0.12);
+      .to([whitePanel.current, accentPanel.current], { xPercent: 100, duration: 0.48 }, 0.12);
 
     return () => tl.kill();
   }, [open]);
@@ -206,7 +206,7 @@ function Navbar() {
         aria-hidden={!open}
         inert={!open}
       >
-        <div ref={redPanel} className="navbar__menu-red" />
+        <div ref={accentPanel} className="navbar__menu-accent" />
         <div ref={whitePanel} className="navbar__menu-white">
           <div className="navbar__menu-content">
             <nav className="navbar__menu-links" aria-label="Main navigation">
