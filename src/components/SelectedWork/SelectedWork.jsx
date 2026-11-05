@@ -154,37 +154,30 @@ function SelectedWork() {
     const ctx = gsap.context(() => {
       const cards = cardRefs.current.filter(Boolean);
       const slots = slotRefs.current.filter(Boolean);
-      const activateCard = (activeIndex) => {
-        cards.forEach((card, cardIndex) => {
-          card.classList.toggle("is-active", cardIndex === activeIndex);
-          card.classList.toggle("is-next", cardIndex === activeIndex - 1);
-        });
-      };
 
       animateHeading();
-      activateCard(0);
 
-      if (reducedMotion) return;
-
-      // One lightweight scrub timeline per incoming card. Only the previous
-      // card's transform and its solid dimming overlay change during scroll.
-      cards.forEach((card, index) => {
-        if (index === 0) return;
-        const previousCard = cards[index - 1];
-        const shade = previousCard.querySelector(".work-card__shade");
-        const timeline = gsap.timeline({
-          scrollTrigger: {
-            trigger: slots[index],
-            start: "top 78%",
-            end: "top 18%",
-            scrub: 0.7,
-            onEnter: () => activateCard(index),
-            onEnterBack: () => activateCard(index - 1),
-          },
+      if (!reducedMotion) {
+        // Cards stay in normal document flow; each one gently reveals as it
+        // enters the viewport. No pinning, stacking, or scroll-scrub effects.
+        cards.forEach((card, index) => {
+          gsap.fromTo(card,
+            { autoAlpha: 0, y: 34 },
+            {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.85,
+              delay: index * 0.06,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: slots[index] || card,
+                start: "top 88%",
+                once: true,
+              },
+            }
+          );
         });
-        timeline.to(previousCard, { scale: 0.95, transformOrigin: "center top", ease: "none" }, 0);
-        timeline.to(shade, { opacity: 0.4, ease: "none" }, 0);
-      });
+      }
 
       const firstImage = section.current?.querySelector(".work-card__image");
       if (firstImage?.complete) scheduleScrollRefresh();
