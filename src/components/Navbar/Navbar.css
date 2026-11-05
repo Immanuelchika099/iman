@@ -14,17 +14,17 @@
 .navbar.is-open .navbar__menu span:first-child{top:1.9rem;transform:rotate(45deg)}
 .navbar.is-open .navbar__menu span:last-child{top:1.9rem;transform:rotate(-45deg)}
 .navbar__menu-panel{position:fixed;inset:0;z-index:90;visibility:hidden;opacity:0;pointer-events:none;overflow:hidden;background:transparent;color:#080808}
-.navbar__menu-red,.navbar__menu-white{position:absolute;inset:0;will-change:transform}
+.navbar__menu-accent,.navbar__menu-white{position:absolute;inset:0;will-change:transform}
 .navbar__menu-accent{background:var(--accent)}
 .navbar__menu-white{display:flex;flex-direction:column;background:#fff;color:#080808}
 .navbar__menu-content{position:relative;width:100%;height:100%;padding:10rem clamp(2rem,6vw,9rem) 3rem;display:flex;flex-direction:column}
 .navbar__menu-links{margin:auto 0;display:flex;flex-direction:column;align-items:flex-start;width:100%}
 .navbar__menu-item-mask{width:100%;overflow:hidden}
 .navbar__menu-links button{width:min(100%,110rem);display:grid;grid-template-columns:7rem 1fr auto;align-items:center;gap:2rem;padding:1rem 0;border:0;background:none;color:#080808;cursor:pointer;text-align:left;opacity:0;will-change:transform}
-.navbar__menu-links button span{font:1.25rem var(--mono);color:#FF0000}
+.navbar__menu-links button span{font:1.25rem var(--mono);color:var(--accent)}
 .navbar__menu-links button strong{font:500 clamp(5rem,9vw,12rem)/.88 var(--display);letter-spacing:-.08em;transition:color .3s ease,transform .4s ease}
-.navbar__menu-links button em{font:400 2rem var(--display);font-style:normal;color:#FF0000;opacity:0;transform:translate(-1rem,1rem);transition:opacity .35s ease,transform .35s ease}
-.navbar__menu-links button:hover strong{color:#FF0000;transform:translateX(1.2rem)}
+.navbar__menu-links button em{font:400 2rem var(--display);font-style:normal;color:var(--accent);opacity:0;transform:translate(-1rem,1rem);transition:opacity .35s ease,transform .35s ease}
+.navbar__menu-links button:hover strong{color:var(--accent);transform:translateX(1.2rem)}
 .navbar__menu-links button:hover em{opacity:1;transform:none}
 .navbar__menu-links button em svg{width:1.8rem;height:1.8rem;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .navbar__menu-footer{display:flex;justify-content:space-between;gap:2rem;padding-top:1.6rem;border-top:1px solid rgba(0,0,0,.16);font:1.1rem var(--mono);letter-spacing:.06em;color:#666}
