@@ -2,7 +2,7 @@
 .selected-work .section-inner{position:relative;z-index:1}
 .work-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;margin-bottom:4.5rem;padding-top:env(safe-area-inset-top,0)}
 .work-head h2{font-size:clamp(6rem,10vw,14rem);line-height:.82;letter-spacing:-.085em;margin-top:0}
-.work-head em{font-style:normal;color:var(--accent)}
+.work-head em{font-style:normal;color:#155eef}
 .work-heading__line{display:block;overflow:hidden;padding-bottom:.06em}
 .work-heading__line-inner{display:block}
 .github-link{display:grid;place-items:center;width:4.8rem;height:4.8rem;flex:0 0 auto;margin-bottom:.5rem;border:1px solid var(--line);border-radius:50%;color:var(--text);transition:color .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease)}
