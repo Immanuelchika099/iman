@@ -1,4 +1,4 @@
-.tech{padding:8rem 0 7rem;background:#000;border-block:1px solid var(--line);overflow:hidden}
+.tech{padding:8rem 0 7rem;background:#000;border-top:1px solid var(--line);border-bottom:0;overflow:hidden}
 .tech__intro{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4rem}
 .tech__intro h2{font-size:clamp(5.5rem,9vw,12rem);line-height:.82;letter-spacing:-.08em;margin-top:1.5rem}
 .tech__intro em{font-style:normal;color:var(--accent)}
